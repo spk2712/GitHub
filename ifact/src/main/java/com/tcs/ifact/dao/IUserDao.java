@@ -29,7 +29,5 @@ public interface IUserDao {
 
 	List<UserInfo> findByEmail(String email);
 
-	List<UserInfo> findByToken(String token);
-
 	List<UserInfo> getForPF(String user, String email, Date date);
 }

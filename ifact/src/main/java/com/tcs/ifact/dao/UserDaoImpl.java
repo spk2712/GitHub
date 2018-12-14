@@ -7,6 +7,8 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,8 @@ import com.tcs.ifact.model.UserInfo;
 @Repository
 public class UserDaoImpl implements IUserDao {
 
+	private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
+	
 	@PersistenceContext	
 	private EntityManager entityManager;
 	
@@ -31,9 +35,9 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public List<UserInfo> findByProject(String project) {
-		String hql = "FROM UserInfo as u WHERE u.project = ?";
-		return entityManager.createQuery(hql).setParameter(0, project).getResultList();
+	public List<UserInfo> findByProject(String projectrole) {
+		String hql = "FROM UserInfo as u WHERE u.projectrole = ?";
+		return entityManager.createQuery(hql).setParameter(0, projectrole).getResultList();
 	}
 	
 	@Override
@@ -42,11 +46,7 @@ public class UserDaoImpl implements IUserDao {
 		return entityManager.createQuery(hql).setParameter(0, email).getResultList();
 	}
 	
-	@Override
-	public List<UserInfo> findByToken(String token) {
-		String hql = "FROM UserInfo as u WHERE u.token = ?";
-		return entityManager.createQuery(hql).setParameter(0, token).getResultList();
-	}
+	
 
 	@Override
 	public List<UserInfo> findAll() {
@@ -57,8 +57,8 @@ public class UserDaoImpl implements IUserDao {
 	public UserInfo getActiveUser(String userName) {
 		UserInfo activeUser = new UserInfo();
 		String enabled = "Y";
-		String hql = "FROM UserInfo u WHERE user=? and enabled=?";
-		List<?> list = entityManager.createQuery(hql).setParameter(0, userName).setParameter(1, enabled).getResultList();
+		String hql = "FROM UserInfo u WHERE user= :userName and enabled= :enabled";
+		List<?> list = entityManager.createQuery(hql).setParameter("userName", userName).setParameter("enabled", enabled).getResultList();
 		if(!list.isEmpty()) {
 			activeUser = (UserInfo)list.get(0);
 		}

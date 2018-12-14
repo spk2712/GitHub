@@ -9,7 +9,7 @@ import javax.validation.constraints.AssertTrue;
 
 @FieldMatch.List({
         @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match"),
 })
 public class UserRegistrationBObj {
 
@@ -20,7 +20,7 @@ public class UserRegistrationBObj {
     private String user;
     
     @NotEmpty
-    private String project;
+    private String projectrole;
     
     @NotEmpty
     private String password;
@@ -38,6 +38,9 @@ public class UserRegistrationBObj {
     
     @NotEmpty
     private String dateOfJoining;
+    
+    
+    private String reportto;
 
 
 
@@ -90,12 +93,12 @@ public class UserRegistrationBObj {
 		this.user = user;
 	}
 
-	public String getProject() {
-		return project;
+	public String getProjectrole() {
+		return projectrole;
 	}
 
-	public void setProject(String project) {
-		this.project = project;
+	public void setProjectrole(String projectrole) {
+		this.projectrole = projectrole;
 	}
 
 	public String getDateOfJoining() {
@@ -104,6 +107,14 @@ public class UserRegistrationBObj {
 
 	public void setDateOfJoining(String dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
+	}
+
+	public String getReportto() {
+		return reportto;
+	}
+
+	public void setReportto(String reportto) {
+		this.reportto = reportto;
 	}
 
 }

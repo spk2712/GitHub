@@ -1,5 +1,7 @@
 package com.tcs.ifact.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -14,19 +16,23 @@ import com.tcs.ifact.service.IUserService;
 
 @RestController
 @RequestMapping(path="/ifact/user")
-@Secured ({"ROLE_ADMIN"})
+//@Secured ({"ROLE_ADMIN"})
 public class UserController {
+	
+	private static final Logger logger = LogManager.getLogger(UserController.class);
+	
 	@Autowired
 	IUserService iuserService;
 	
+	
 	@RequestMapping(value = "/getAllUser",method=RequestMethod.GET)
 	public ResponseEntity<Object> getAllUser() {
-		System.out.println("Welcome to getAllUser");
+		logger.debug("Welcome to getAllUser");
 		return iuserService.getAllUser();
 		
 	}
 	
-	@RequestMapping(value = "/getUserByRole",method=RequestMethod.GET)
+	/*@RequestMapping(value = "/getUserByRole",method=RequestMethod.GET)
 	public ResponseEntity<Object> getUserByRole(@RequestParam String role) {
 		System.out.println("Welcome to getUserByRole");
 		return iuserService.getUserByRole(role);
@@ -45,42 +51,42 @@ public class UserController {
 		System.out.println("Welcome to getUserByUserId");
 		return iuserService.getUserByUserId(user);
 		
-	}
+	}*/
 	
 	
 	@RequestMapping(value = "/addUser",method=RequestMethod.PUT)
 	public ResponseEntity<String> addUser(@RequestBody UserBObj userBObj) {
-		System.out.println("Welcome to addUser");
+		logger.debug("Welcome to addUser");
 		return iuserService.addUser(userBObj);
 		
 	}
 	
 	@RequestMapping(value= "/updateUser",method=RequestMethod.PUT)
 	public ResponseEntity<String> updateUser(@RequestBody UserBObj userBObj) {
-		System.out.println("Welcome to updateUser");
+		logger.debug("Welcome to updateUser");
 		return iuserService.updateUser(userBObj);
 	
 	}
 	
 	@RequestMapping(value= "/deleteByUserId",method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteByUserId(@RequestParam String user) {
-		System.out.println("Welcome to deleteByUserId");
+		logger.debug("Welcome to deleteByUserId");
 		return iuserService.deleteByUserId(user);
 	
 	}
 	
 	@RequestMapping(value= "/deleteAllUser",method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteAllUser() {
-		System.out.println("Welcome to deleteAllUser");
+		logger.debug("Welcome to deleteAllUser");
 		return iuserService.deleteAllUser();
 	
 	}
 	
 	@RequestMapping(value= "/enableAndDisableUser",method=RequestMethod.PUT)
 	public ResponseEntity<String> enableAndDisableUser(@RequestParam String user,@RequestParam String flag) {
-		System.out.println("Welcome to deleteAllUser");
+		logger.debug("Welcome to enableAndDisableUser");
 		return iuserService.enableAndDisableUser(user,flag);
 	
 	}
-
+	
 }

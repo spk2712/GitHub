@@ -1,5 +1,7 @@
 package com.tcs.ifact.handler;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +15,13 @@ import com.tcs.ifact.model.UserInfo;
 @Component
 public class UserHandler {
 	
+	private static final Logger logger = LogManager.getLogger(UserHandler.class);
+	
 	@Autowired
 	IFactDBHandler iFactDBHandler;
 
-	IFactObjectHandler iFactObjectHandler = new IFactObjectHandler();
+	@Autowired
+	IFactObjectHandler iFactObjectHandler;
 	
 	public ResponseBObj addUser(UserBObj userBObj) {
 		ResponseBObj responseBObj = new ResponseBObj();
@@ -83,13 +88,12 @@ public class UserHandler {
 
 	public ResponseBObj registration(UserRegistrationBObj regBObj) {
 		ResponseBObj responseBObj = new ResponseBObj();
-		Object obj  = iFactObjectHandler.conUserObjForreg(regBObj);
-		if(obj instanceof UserInfo) {
-			UserInfo user = (UserInfo)obj;
-			responseBObj = iFactDBHandler.persistUser(user);
-		}else if(obj instanceof ResponseBObj) {
-			ResponseBObj res = (ResponseBObj)obj;
-			responseBObj = res;
+		responseBObj  = iFactObjectHandler.conUserObjForreg(regBObj);
+		if(null != responseBObj) {
+			if(!responseBObj.isError()) {
+				UserInfo user = (UserInfo)responseBObj.getResponseObject();
+				responseBObj = iFactDBHandler.persistUser(user);
+			}
 		}		
 		return responseBObj;
 	}
@@ -104,7 +108,7 @@ public class UserHandler {
 		ResponseBObj responseBObj = new ResponseBObj();
 		if(null != prObj) {
 			if(null != prObj.getOldpassword()) {
-				responseBObj = iFactDBHandler.updatePF(prObj);
+				responseBObj = iFactDBHandler.updatePWDForFP(prObj);
 			}
 		}
 		

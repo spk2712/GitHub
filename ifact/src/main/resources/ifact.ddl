@@ -1,4 +1,4 @@
-CREATE TABLE `leakage` (
+CREATE TABLE 'ifact'.`leakage` (
   `leakageID` int(11) GENERATED ALWAYS AS (100) STORED NOT NULL,
   `EmpID` varchar(45) NOT NULL,
   `WorkerID` varchar(45) NOT NULL,

@@ -16,8 +16,10 @@ import java.util.List;
 public class Pwb implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private PwbPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
+	private int pwbID;
 
 	@Column(length=45)
 	private String cp;
@@ -30,6 +32,9 @@ public class Pwb implements Serializable {
 
 	@Column(length=45)
 	private String dp;
+
+	@Column(nullable=false, length=45)
+	private String empID;
 
 	@Column(length=45)
 	private String firstName;
@@ -94,6 +99,9 @@ public class Pwb implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date workerEndDate;
 
+	@Column(nullable=false, length=45)
+	private String workerID;
+
 	@Temporal(TemporalType.DATE)
 	private Date workerStartDate;
 
@@ -101,18 +109,18 @@ public class Pwb implements Serializable {
 	private String workLocation;
 
 	//bi-directional many-to-one association to Leakage
-	@OneToMany(mappedBy="pwb")
+	@OneToMany(mappedBy="pwb",cascade = CascadeType.ALL)
 	private List<Leakage> leakages;
 
 	public Pwb() {
 	}
 
-	public PwbPK getId() {
-		return this.id;
+	public int getPwbID() {
+		return this.pwbID;
 	}
 
-	public void setId(PwbPK id) {
-		this.id = id;
+	public void setPwbID(int pwbID) {
+		this.pwbID = pwbID;
 	}
 
 	public String getCp() {
@@ -145,6 +153,14 @@ public class Pwb implements Serializable {
 
 	public void setDp(String dp) {
 		this.dp = dp;
+	}
+
+	public String getEmpID() {
+		return this.empID;
+	}
+
+	public void setEmpID(String empID) {
+		this.empID = empID;
 	}
 
 	public String getFirstName() {
@@ -313,6 +329,14 @@ public class Pwb implements Serializable {
 
 	public void setWorkerEndDate(Date workerEndDate) {
 		this.workerEndDate = workerEndDate;
+	}
+
+	public String getWorkerID() {
+		return this.workerID;
+	}
+
+	public void setWorkerID(String workerID) {
+		this.workerID = workerID;
 	}
 
 	public Date getWorkerStartDate() {

@@ -7,9 +7,11 @@ public class UserBObj {
 	private String password;
 	private String fullName;
 	private String enabled;
-	private String project;
+	private String projectrole;
 	private String email;
 	private String dateofjoining;
+	private String reportto;
+	private String nickname;
 	
 	
 	public String getUser() {
@@ -42,11 +44,11 @@ public class UserBObj {
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
-	public String getProject() {
-		return project;
+	public String getProjectrole() {
+		return projectrole;
 	}
-	public void setProject(String project) {
-		this.project = project;
+	public void setProjectrole(String projectrole) {
+		this.projectrole = projectrole;
 	}
 	public String getEmail() {
 		return email;
@@ -59,6 +61,18 @@ public class UserBObj {
 	}
 	public void setDateofjoining(String dateofjoining) {
 		this.dateofjoining = dateofjoining;
+	}
+	public String getReportto() {
+		return reportto;
+	}
+	public void setReportto(String reportto) {
+		this.reportto = reportto;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 	

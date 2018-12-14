@@ -1,19 +1,22 @@
 package com.tcs.ifact.service;
 
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.tcs.ifact.bobj.PWBUpdateBObj;
 
 
 
 public interface IPWBService {
 	
-	ResponseEntity<String> pwbFromRawData();
-	ResponseEntity<String> pwbFromExcel();
-	ResponseEntity<String> uploadPWBForDM();
-	ResponseEntity<String> uploadPWBForDP();
-	ResponseEntity<String> getPWBForDP();
-	ResponseEntity<String> getPWBForDM();
-	ResponseEntity<String> uploadExcel(MultipartFile file, String fileName);
+	ResponseEntity<Object> pwbFromRawData(final String user);
+	ResponseEntity<Object> pwbFromExcel(final String user);
+	ResponseEntity<Object> getAllPWBData();
+	ResponseEntity<Object> getPWBDataByUser(String user);
+	ResponseEntity<Object> upadtePWBData(List<PWBUpdateBObj> pwbUpdate, String user);
+	ResponseEntity<Object> pwbWeekFreeze();
+	
 
 }

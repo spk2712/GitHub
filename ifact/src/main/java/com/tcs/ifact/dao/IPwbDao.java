@@ -6,11 +6,17 @@ import com.tcs.ifact.model.Pwb;
 
 public interface IPwbDao {
 	
-	   Pwb findById(final String empID,final String workerID);
+	   Pwb findById(final int pk);
 	   
-	   Pwb findByDP(final String dp);
+	   List<Pwb> findByEmpIDAndWorkerID(final String empID,final String workerID);
 	   
-	   Pwb findByDM(final String dm);
+	   List<Pwb> findByEmpID(final String empID);
+	   
+	   List<Pwb> findByWorkerID(final String workerId);
+	   
+	   List<Pwb> findByDP(final String dp);
+	   
+	   List<Pwb> findByDM(final String dm);
 	   
 	   List<Pwb> findAll();
 	 

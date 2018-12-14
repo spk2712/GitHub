@@ -1,37 +1,37 @@
 package com.tcs.ifact.handler;
 
-import java.util.HashMap;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.tcs.ifact.bobj.LoginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
-import com.tcs.ifact.bobj.UserBObj;
 import com.tcs.ifact.bobj.UserRegistrationBObj;
 import com.tcs.ifact.model.UserInfo;
 
 @Component
 public class IFactHandler {
 	
+	private static final Logger logger = LogManager.getLogger(IFactHandler.class);
+	
 	@Autowired
 	IFactDBHandler iFactDBHandler;
 
-	IFactObjectHandler iFactObjectHandler = new IFactObjectHandler();
+	@Autowired
+	IFactObjectHandler iFactObjectHandler;
 	
 	
 	public ResponseBObj registration(UserRegistrationBObj regBObj) {
 		ResponseBObj responseBObj = new ResponseBObj();
-		Object obj  = iFactObjectHandler.conUserObjForreg(regBObj);
-		if(obj instanceof UserInfo) {
-			UserInfo user = (UserInfo)obj;
-			responseBObj = iFactDBHandler.persistUser(user);
-		}else if(obj instanceof ResponseBObj) {
-			ResponseBObj res = (ResponseBObj)obj;
-			responseBObj = res;
+		responseBObj  = iFactObjectHandler.conUserObjForreg(regBObj);
+		if(null != responseBObj) {
+			if(!responseBObj.isError()) {
+				UserInfo user = (UserInfo)responseBObj.getResponseObject();
+				responseBObj = iFactDBHandler.persistUser(user);
+			}
 		}		
 		return responseBObj;
 	}
@@ -42,12 +42,10 @@ public class IFactHandler {
 		return responseBObj;
 	}
 
-	public ResponseBObj restPasswordPF(PasswordResetBObj prObj) {
+	public ResponseBObj restPasswordFP(PasswordResetBObj prObj) {
 		ResponseBObj responseBObj = new ResponseBObj();
 		if(null != prObj) {
-			if(null != prObj.getOldpassword()) {
-				responseBObj = iFactDBHandler.updatePF(prObj);
-			}
+				responseBObj = iFactDBHandler.updatePWDForFP(prObj);
 		}
 		
 		return responseBObj;
@@ -61,6 +59,25 @@ public class IFactHandler {
 			}
 		}
 		
+		return responseBObj;
+	}
+
+	public ResponseBObj login(LoginBObj login) {
+		ResponseBObj responseBObj = new ResponseBObj();
+		if(null != login) {
+			if(null != login.getUser()) {
+				if(null != login.getPassword()) {
+					responseBObj = iFactDBHandler.validateLogin(login);
+				}else {
+					responseBObj.setError(true);
+					responseBObj.setMessage("Please Enter User Name");
+				}
+			}else {
+				responseBObj.setError(true);
+				responseBObj.setMessage("Please Enter User Name");
+				
+			}
+		}
 		return responseBObj;
 	}
 

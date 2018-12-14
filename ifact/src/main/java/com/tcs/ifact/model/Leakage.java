@@ -16,8 +16,8 @@ public class Leakage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(unique=true, nullable=false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int leakageID;
 
 	@Temporal(TemporalType.DATE)
@@ -30,17 +30,17 @@ public class Leakage implements Serializable {
 	private String leakageHrs;
 
 	@Column(length=45)
+	private String leakageMonth;
+
+	@Column(length=45)
 	private String leakageReason;
 
 	@Column(length=45)
 	private String leakageRevenue;
 
 	//bi-directional many-to-one association to Pwb
-	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="EmpID", referencedColumnName="EmpID", nullable=false),
-		@JoinColumn(name="WorkerID", referencedColumnName="WorkerID", nullable=false)
-		})
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="pwbID", nullable=false)
 	private Pwb pwb;
 
 	public Leakage() {
@@ -76,6 +76,14 @@ public class Leakage implements Serializable {
 
 	public void setLeakageHrs(String leakageHrs) {
 		this.leakageHrs = leakageHrs;
+	}
+
+	public String getLeakageMonth() {
+		return this.leakageMonth;
+	}
+
+	public void setLeakageMonth(String leakageMonth) {
+		this.leakageMonth = leakageMonth;
 	}
 
 	public String getLeakageReason() {

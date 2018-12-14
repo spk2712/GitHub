@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tcs.ifact.bobj.LoginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
@@ -49,9 +50,9 @@ public class IFactServiceImpl implements IIFactService {
 	}
 
 	@Override
-	public ResponseEntity<Object> restPasswordPF(PasswordResetBObj prObj) {
+	public ResponseEntity<Object> restPasswordFP(PasswordResetBObj prObj) {
 		ResponseBObj res = new ResponseBObj();
-		res = ifactHandler.restPasswordPF(prObj);
+		res = ifactHandler.restPasswordFP(prObj);
 		if(null != res) {
 			if(res.isError()) {
 				return new ResponseEntity<Object>(res,HttpStatus.EXPECTATION_FAILED);
@@ -71,6 +72,20 @@ public class IFactServiceImpl implements IIFactService {
 				return new ResponseEntity<Object>(res,HttpStatus.EXPECTATION_FAILED);
 			}else {
 				return new ResponseEntity<Object>(res,HttpStatus.CREATED);
+			}
+		}
+		return new ResponseEntity<Object>(res,HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Object> login(LoginBObj login) {
+		ResponseBObj res = new ResponseBObj();
+		res = ifactHandler.login(login);
+		if(null != res) {
+			if(res.isError()) {
+				return new ResponseEntity<Object>(res,HttpStatus.FORBIDDEN);
+			}else {
+				return new ResponseEntity<Object>(res,HttpStatus.ACCEPTED);
 			}
 		}
 		return new ResponseEntity<Object>(res,HttpStatus.OK);

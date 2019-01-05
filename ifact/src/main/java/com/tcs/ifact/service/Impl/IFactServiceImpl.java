@@ -1,4 +1,4 @@
-package com.tcs.ifact.service;
+package com.tcs.ifact.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +14,7 @@ import com.tcs.ifact.bobj.UserBObj;
 import com.tcs.ifact.bobj.UserRegistrationBObj;
 import com.tcs.ifact.handler.IFactHandler;
 import com.tcs.ifact.model.UserInfo;
+import com.tcs.ifact.service.IIFactService;
 
 @Service
 public class IFactServiceImpl implements IIFactService {

@@ -1,4 +1,4 @@
-package com.tcs.ifact.service;
+package com.tcs.ifact.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -15,6 +15,7 @@ import com.tcs.ifact.bobj.ResponseBObj;
 import com.tcs.ifact.bobj.UploadFileBObj;
 import com.tcs.ifact.handler.FileHandler;
 import com.tcs.ifact.model.DBFile;
+import com.tcs.ifact.service.IFileService;
 
 @Service
 public class FileServiceImpl implements IFileService {

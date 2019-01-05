@@ -1,4 +1,4 @@
-package com.tcs.ifact.service;
+package com.tcs.ifact.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +9,7 @@ import com.tcs.ifact.bobj.ResponseBObj;
 import com.tcs.ifact.bobj.UserBObj;
 import com.tcs.ifact.handler.IFactHandler;
 import com.tcs.ifact.handler.UserHandler;
+import com.tcs.ifact.service.IUserService;
 
 
 @Service
@@ -47,9 +48,6 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ResponseEntity<Object> getAllUser() {
 		ResponseBObj res = new ResponseBObj();
-		res.setError(true);
-		res.setMessage("Error getUserByRole");
-		res  = userHandler.getAllUser();
 		if(null != res) {
 			if(res.isError()) {
 				return new ResponseEntity<Object>(res,HttpStatus.EXPECTATION_FAILED);

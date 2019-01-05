@@ -1,4 +1,4 @@
-package com.tcs.ifact.dao;
+package com.tcs.ifact.dao.Impl;
 
 import java.util.Date;
 import java.util.List;
@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tcs.ifact.dao.IUserDao;
 import com.tcs.ifact.model.UserInfo;
 
 @Transactional

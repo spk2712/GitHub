@@ -1,4 +1,4 @@
-package com.tcs.ifact.dao;
+package com.tcs.ifact.dao.Impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tcs.ifact.dao.IPwbDao;
 import com.tcs.ifact.model.Pwb;
 import com.tcs.ifact.model.UserInfo;
 
@@ -35,7 +36,7 @@ public class PwbDaoImpl implements IPwbDao {
 
 	@Override
 	public List<Pwb> findByDM(String dm) {
-		String hql = "FROM Pwb as p WHERE p.dm = :dp";
+		String hql = "FROM Pwb as p WHERE p.dm = :dm";
 		return entityManager.createQuery(hql).setParameter("dm", dm).getResultList();
 	}
 

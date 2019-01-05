@@ -16,7 +16,7 @@ import com.tcs.ifact.service.IUserService;
 
 @RestController
 @RequestMapping(path="/ifact/user")
-//@Secured ({"ROLE_ADMIN"})
+@Secured ({"ROLE_ADMIN"})
 public class UserController {
 	
 	private static final Logger logger = LogManager.getLogger(UserController.class);
@@ -32,7 +32,7 @@ public class UserController {
 		
 	}
 	
-	/*@RequestMapping(value = "/getUserByRole",method=RequestMethod.GET)
+	@RequestMapping(value = "/getUserByRole",method=RequestMethod.GET)
 	public ResponseEntity<Object> getUserByRole(@RequestParam String role) {
 		System.out.println("Welcome to getUserByRole");
 		return iuserService.getUserByRole(role);
@@ -51,7 +51,7 @@ public class UserController {
 		System.out.println("Welcome to getUserByUserId");
 		return iuserService.getUserByUserId(user);
 		
-	}*/
+	}
 	
 	
 	@RequestMapping(value = "/addUser",method=RequestMethod.PUT)

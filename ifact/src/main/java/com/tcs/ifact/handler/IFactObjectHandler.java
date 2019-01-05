@@ -36,6 +36,7 @@ import com.tcs.ifact.bobj.PWBUpdateBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
 import com.tcs.ifact.bobj.UserBObj;
 import com.tcs.ifact.bobj.UserRegistrationBObj;
+import com.tcs.ifact.bobj.UtilBObj;
 import com.tcs.ifact.helper.IFactConstant;
 import com.tcs.ifact.helper.IFactHelper;
 import com.tcs.ifact.model.DBFile;
@@ -43,6 +44,7 @@ import com.tcs.ifact.model.Leakage;
 import com.tcs.ifact.model.Pivot;
 import com.tcs.ifact.model.Pwb;
 import com.tcs.ifact.model.UserInfo;
+import com.tcs.ifact.model.Util;
 
 @Component
 public class IFactObjectHandler {
@@ -1669,5 +1671,27 @@ public class IFactObjectHandler {
 		
 		return login;	
 		
+	}
+
+	public Object constructUtilObject(UtilBObj utilBObj) {
+		Util util = new Util();
+		ResponseBObj responseBObj = new ResponseBObj();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
+		try {
+			if(null != utilBObj) {
+				util.setUtilId(utilBObj.getUtilId());
+				util.setUtilgroup(utilBObj.getUtilgroup());
+				util.setUtilname(utilBObj.getUtilname());
+				util.setUtilvalue(utilBObj.getUtilvalue());
+			}
+		}catch(Exception e) {
+			logger.error(e);
+			responseBObj.setError(true);
+			responseBObj.setMessage(e.getMessage());
+			return responseBObj;
+		}
+		return util;
 	}
 }

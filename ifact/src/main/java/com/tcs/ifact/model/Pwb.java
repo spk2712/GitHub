@@ -109,7 +109,7 @@ public class Pwb implements Serializable {
 	private String workLocation;
 
 	//bi-directional many-to-one association to Leakage
-	@OneToMany(mappedBy="pwb",cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="pwb",cascade = CascadeType.ALL)
 	private List<Leakage> leakages;
 
 	public Pwb() {

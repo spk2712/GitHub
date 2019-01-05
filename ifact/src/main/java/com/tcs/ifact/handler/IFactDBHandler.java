@@ -544,7 +544,6 @@ public class IFactDBHandler {
 		try {
 			if(null != res && !res.isError() && null != res.getResponseObject() && res.getResponseObject() instanceof ArrayList) {
 				LocalDate today = LocalDate.now();
-				Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 				ArrayList<Pwb> pwbtoUpdate = (ArrayList<Pwb>) res.getResponseObject();
 				if(null != pwbtoUpdate && pwbtoUpdate.size()>0) {
 					Iterator<Pwb> pwbtoUitr = pwbtoUpdate.iterator();
@@ -638,7 +637,7 @@ public class IFactDBHandler {
 				}
 			}
 			updateUtilValueByKey(IFactConstant.PivotWeekCouter,newweek);
-			bObj.setMessage("getPWBDataByUser Success");
+			bObj.setMessage("insertPWBPivotObject Success");
 			bObj.setError(false);
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -679,6 +678,54 @@ public class IFactDBHandler {
 		return bObj;
 	}
 
+	
+	public ResponseBObj getAllUtilData() {
+		ResponseBObj bObj = new ResponseBObj();
+		try {
+				List<Util> utilData= utilDao.findAll();
+				if(null != utilData && utilData.size()>0) {
+					bObj.setResponseObject(utilData);
+					bObj.setMessage("Data retrived");
+					bObj.setError(false);
+				}else {
+					bObj.setMessage("No Data Found for given search criteria");
+					bObj.setError(false);
+				}
+		}catch(Exception ex) {
+			logger.error(ex);
+			bObj.setMessage("Error in User Data Retrival for User:"+ ex.getMessage());
+			bObj.setError(true);
+		}
+	
+		return bObj;
+	}
+	
+	public ResponseBObj persistUtil(Util util) {
+		ResponseBObj bObj = new ResponseBObj();
+		try {
+			if(null != util) {
+				Util utilDB= utilDao.findById(util.getUtilId());
+				if(null != utilDB) {
+					utilDao.update(util);
+					bObj.setMessage("Util Data Updated");
+					bObj.setError(false);
+				}else {
+					utilDao.create(util);
+					bObj.setMessage("Util Data Created");
+					bObj.setError(false);
+				}
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			logger.error(ex.fillInStackTrace());
+			bObj.setMessage("Error in User Data Creation/Updation:"+ ex.getMessage());
+			bObj.setError(true);
+		}
+	
+		return bObj;
+	}
+
+	
 /*	public String getRoleAndName(String user) {
 		String value = null;
 		if(null != user) {
@@ -692,6 +739,8 @@ public class IFactDBHandler {
 		}
 		return value;
 	}*/
+	
+	
 
 
 

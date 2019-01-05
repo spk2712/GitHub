@@ -1,4 +1,4 @@
-package com.tcs.ifact.service;
+package com.tcs.ifact.service.Impl;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.tcs.ifact.bobj.PWBUpdateBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
 import com.tcs.ifact.handler.PWBHandler;
+import com.tcs.ifact.service.IPWBService;
 
 @Service
 public class PWBServiceImpl implements IPWBService {

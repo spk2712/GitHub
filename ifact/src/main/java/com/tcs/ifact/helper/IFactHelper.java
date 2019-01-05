@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.tcs.ifact.dao.IUtilDao;
-import com.tcs.ifact.dao.UtilDaoImpl;
+import com.tcs.ifact.dao.Impl.UtilDaoImpl;
 import com.tcs.ifact.model.Leakage;
 import com.tcs.ifact.model.Util;
 

@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tcs.ifact.bobj.ResponseBObj;
-import com.tcs.ifact.dao.UtilDaoImpl;
+import com.tcs.ifact.dao.Impl.UtilDaoImpl;
 import com.tcs.ifact.model.DBFile;
 
 @Component

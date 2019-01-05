@@ -1,4 +1,4 @@
-package com.tcs.ifact.dao;
+package com.tcs.ifact.dao.Impl;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tcs.ifact.controller.UserController;
+import com.tcs.ifact.dao.IDBFileDao;
 import com.tcs.ifact.model.DBFile;
 
 

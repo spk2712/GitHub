@@ -9,6 +9,5 @@ public interface IUtilService {
 
 	ResponseEntity<Object> findByKey(final String key);
 	ResponseEntity<Object> getAllUtilData();
-	ResponseEntity<String> update(final UtilBObj entity);
-	ResponseEntity<String> add(final UtilBObj entity);
+	ResponseEntity<String> presistUtil(final UtilBObj entity);
 }

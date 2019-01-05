@@ -6,12 +6,16 @@
         http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.5.xsd
         http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.5.xsd">
 	<service>
-    <jsr107:defaults enable-management="false" enable-statistics="true"/>
-  </service>
+		<jsr107:defaults enable-management="false"
+			enable-statistics="true" />
+	</service>
 
-  <cache alias="util">
-    <resources>
-      <heap unit="entries">2000</heap>
-    </resources>
-  </cache>
+	<cache alias="util">
+		<expiry>
+			<ttl unit="seconds">3600</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">2000</heap>
+		</resources>
+	</cache>
 </config>

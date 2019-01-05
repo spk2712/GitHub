@@ -610,7 +610,7 @@ public class IFactDBHandler {
 			bObj.setMessage("getPWBDataByUser Success");
 			bObj.setError(false);
 		}catch(Exception ex) {
-			logger.error(ex);
+			logger.error(ex.fillInStackTrace());
 			bObj.setMessage("Error in UpdatePWB:"+ ex.getMessage());
 			bObj.setError(true);
 		}
@@ -641,7 +641,7 @@ public class IFactDBHandler {
 			bObj.setError(false);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			logger.error(ex);
+			logger.error(ex.fillInStackTrace());
 			bObj.setMessage("Error in insertPWBPivotObject:"+ ex.getMessage());
 			bObj.setError(true);
 		}
@@ -670,7 +670,7 @@ public class IFactDBHandler {
 			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			logger.error(ex);
+			logger.error(ex.fillInStackTrace());
 			bObj.setMessage("Error in validateLogin:"+ ex.getMessage());
 			bObj.setError(true);
 		}
@@ -692,7 +692,7 @@ public class IFactDBHandler {
 					bObj.setError(false);
 				}
 		}catch(Exception ex) {
-			logger.error(ex);
+			logger.error(ex.fillInStackTrace());
 			bObj.setMessage("Error in User Data Retrival for User:"+ ex.getMessage());
 			bObj.setError(true);
 		}
@@ -716,7 +716,6 @@ public class IFactDBHandler {
 				}
 			}
 		}catch(Exception ex) {
-			ex.printStackTrace();
 			logger.error(ex.fillInStackTrace());
 			bObj.setMessage("Error in User Data Creation/Updation:"+ ex.getMessage());
 			bObj.setError(true);

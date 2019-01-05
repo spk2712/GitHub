@@ -1676,9 +1676,6 @@ public class IFactObjectHandler {
 	public Object constructUtilObject(UtilBObj utilBObj) {
 		Util util = new Util();
 		ResponseBObj responseBObj = new ResponseBObj();
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-
 		try {
 			if(null != utilBObj) {
 				util.setUtilId(utilBObj.getUtilId());

@@ -37,10 +37,10 @@ private static final Logger logger = LogManager.getLogger(UtilController.class);
 		return iutilService.findByKey(key);	
 	}
 	
-	@RequestMapping(value= "/updateUtil",method=RequestMethod.PUT)
-	public ResponseEntity<String> update(@RequestBody UtilBObj utilBObj) {
-		logger.debug("Welcome to updateUser");
-		return iutilService.update(utilBObj);
+	@RequestMapping(value= "/presistUtil",method=RequestMethod.PUT)
+	public ResponseEntity<String> presistUtil(@RequestBody UtilBObj utilBObj) {
+		logger.debug("Welcome to presistUtil");
+		return iutilService.presistUtil(utilBObj);
 	
 	}
 

@@ -37,15 +37,10 @@ public class UtilServiceImpl implements IUtilService {
 		return new ResponseEntity<Object>(res,HttpStatus.EXPECTATION_FAILED);
 	}
 
-	@Override
-	public ResponseEntity<String> update(UtilBObj entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public ResponseEntity<String> add(UtilBObj utilBObj) {
-		ResponseBObj res = utilHandler.addUtil(utilBObj);
+	public ResponseEntity<String> presistUtil(UtilBObj utilBObj) {
+		ResponseBObj res = utilHandler.presistUtil(utilBObj);
 		if(null != res) {
 			if(res.isError()) {
 				return new ResponseEntity<String>(res.getMessage(),HttpStatus.EXPECTATION_FAILED);

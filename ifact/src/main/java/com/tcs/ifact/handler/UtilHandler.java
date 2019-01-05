@@ -26,7 +26,7 @@ private static final Logger logger = LogManager.getLogger(UserHandler.class);
 		return responseBObj;
 	}
 	
-	public ResponseBObj addUtil(UtilBObj utilBObj) {
+	public ResponseBObj presistUtil(UtilBObj utilBObj) {
 		ResponseBObj responseBObj = new ResponseBObj();
 		Object obj  = iFactObjectHandler.constructUtilObject(utilBObj);
 		if(obj instanceof Util) {

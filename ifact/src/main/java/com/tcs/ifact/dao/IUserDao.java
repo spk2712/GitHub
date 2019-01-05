@@ -8,10 +8,10 @@ import org.springframework.cache.annotation.Cacheable;
 
 import com.tcs.ifact.model.UserInfo;
 
-@CacheConfig(cacheNames = "util")
+//@CacheConfig(cacheNames = "util")
 public interface IUserDao {
 
-	@Cacheable
+	//@Cacheable
 	UserInfo findById(final String User);
 
 	List<UserInfo> findByRole(final String role);

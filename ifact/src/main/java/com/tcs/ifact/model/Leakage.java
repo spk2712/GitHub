@@ -2,6 +2,9 @@ package com.tcs.ifact.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import java.util.Date;
 
 
@@ -10,6 +13,7 @@ import java.util.Date;
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="leakage")
 @NamedQuery(name="Leakage.findAll", query="SELECT l FROM Leakage l")
 public class Leakage implements Serializable {

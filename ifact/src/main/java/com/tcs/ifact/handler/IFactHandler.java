@@ -65,8 +65,8 @@ public class IFactHandler {
 	public ResponseBObj login(LoginBObj login) {
 		ResponseBObj responseBObj = new ResponseBObj();
 		if(null != login) {
-			if(null != login.getUser()) {
-				if(null != login.getPassword()) {
+			if(null != login.getUser() && !login.getUser().isEmpty()) {
+				if(null != login.getPassword() && !login.getPassword().isEmpty()) {
 					responseBObj = iFactDBHandler.validateLogin(login);
 				}else {
 					responseBObj.setError(true);

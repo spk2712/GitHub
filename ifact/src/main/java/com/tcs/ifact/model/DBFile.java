@@ -2,6 +2,9 @@ package com.tcs.ifact.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import java.util.Date;
 import java.math.BigInteger;
 
@@ -11,6 +14,7 @@ import java.math.BigInteger;
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="files")
 @NamedQuery(name="DBFile.findAll", query="SELECT d FROM DBFile d")
 public class DBFile implements Serializable {

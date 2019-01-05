@@ -3,12 +3,15 @@ package com.tcs.ifact.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 
 /**
  * The persistent class for the pivot database table.
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="pivot")
 @NamedQuery(name="Pivot.findAll", query="SELECT p FROM Pivot p")
 public class Pivot implements Serializable {

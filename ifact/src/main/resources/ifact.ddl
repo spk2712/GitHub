@@ -15,7 +15,7 @@ CREATE TABLE 'ifact'.`leakage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
-CREATE TABLE `pwb` (
+CREATE TABLE 'ifact'.`pwb` (
   `EmpID` varchar(45) NOT NULL,
   `WorkerID` varchar(45) NOT NULL,
   `GDCEID` varchar(45) DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `pwb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
-CREATE TABLE `users` (
+CREATE TABLE 'ifact'.`users` (
   `user` varchar(45) NOT NULL,
   `fullname` varchar(45) DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,

@@ -3,12 +3,15 @@ package com.tcs.ifact.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 
 /**
  * The persistent class for the util database table.
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="util")
 @NamedQuery(name="Util.findAll", query="SELECT u FROM Util u")
 public class Util implements Serializable {

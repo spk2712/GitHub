@@ -3,12 +3,15 @@ package com.tcs.ifact.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 
 /**
  * The persistent class for the leave database table.
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="leave")
 @NamedQuery(name="Leave.findAll", query="SELECT l FROM Leave l")
 public class Leave implements Serializable {

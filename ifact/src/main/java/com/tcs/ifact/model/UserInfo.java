@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.annotations.Type;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
  * 
  */
 @Entity
+//@EnableAutoConfiguration
 @Table(name="users")
 @NamedQuery(name="UserInfo.findAll", query="SELECT u FROM UserInfo u")
 public class UserInfo implements Serializable {

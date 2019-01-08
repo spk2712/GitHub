@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ifact</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <mapping class="com.tcs.ifact.model.DBFile" />
+        <mapping class="com.tcs.ifact.model.Leakage" />
+        <mapping class="com.tcs.ifact.model.Leave" />
+        <mapping class="com.tcs.ifact.model.Pivot" />
+        <mapping class="com.tcs.ifact.model.Pwb" />
+        <mapping class="com.tcs.ifact.model.UserInfo" />
+        <mapping class="com.tcs.ifact.model.Util" />
+    </session-factory>
+</hibernate-configuration>

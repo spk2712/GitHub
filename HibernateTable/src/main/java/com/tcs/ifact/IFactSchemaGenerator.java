@@ -11,7 +11,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
  
 // Hibernate 5.
-public class SchemaGeneratorDemo {
+public class IFactSchemaGenerator {
  
    public static final String SCRIPT_FILE = "exportScript.sql";
  
@@ -59,13 +59,10 @@ public class SchemaGeneratorDemo {
  
    public static void main(String[] args) {
  
-       // Using Oracle Database.
-  
        String configFileName = "hibernate-mysql.cfg.xml";
  
        // Create the ServiceRegistry from hibernate-xxx.cfg.xml
-       ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()//
-               .configure(configFileName).build();
+       ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure(configFileName).build();
  
        // Create a metadata sources using the specified service registry.
        Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();

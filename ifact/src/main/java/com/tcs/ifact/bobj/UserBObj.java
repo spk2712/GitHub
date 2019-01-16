@@ -12,6 +12,7 @@ public class UserBObj {
 	private String dateofjoining;
 	private String reportto;
 	private String nickname;
+	private String authstring;
 	
 	
 	public String getUser() {
@@ -73,6 +74,12 @@ public class UserBObj {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getAuthstring() {
+		return authstring;
+	}
+	public void setAuthstring(String authstring) {
+		this.authstring = authstring;
 	}
 	
 	

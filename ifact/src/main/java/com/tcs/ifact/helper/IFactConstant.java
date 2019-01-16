@@ -37,6 +37,16 @@ public class IFactConstant {
 	public static final String ROLE_DM = "ROLE_DM";
 	public static final String ROLE_ADMIN = "ROLE_ADMIN";
 	public static final String PivotWeekCouter = "PivotWeekCouter";
+	public static final String UnitedStates = "United States";
+	public static final String USA = "USA";
+	public static final String UnitedKingdom = "United Kingdom";
+	public static final String UK = "UK";
+	public static final String Singapore = "Singapore";
+	public static final String PWBSHEET = "PWB";
+	public static final String GIFT = "GIFT";
+	public static final String I2I = "I2I";
+	public static final String CLP = "CLP";
+	public static final String MSP = "MSP";
 
 
 	

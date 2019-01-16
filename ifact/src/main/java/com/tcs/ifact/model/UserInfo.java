@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.annotations.Type;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+//import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -33,6 +33,9 @@ public class UserInfo implements Serializable {
 
 	@Column(length=250)
 	private String password;
+	
+	@Column(length=250)
+	private String authstring;
 
 	@Column(length=45)
 	private String projectrole;
@@ -51,7 +54,7 @@ public class UserInfo implements Serializable {
 	
 	@Column(length=45)
 	private String reportto;
-
+	
 
 
 	public UserInfo() {
@@ -135,6 +138,14 @@ public class UserInfo implements Serializable {
 
 	public void setReportto(String reportto) {
 		this.reportto = reportto;
+	}
+
+	public String getAuthstring() {
+		return authstring;
+	}
+
+	public void setAuthstring(String authstring) {
+		this.authstring = authstring;
 	}
 
 	

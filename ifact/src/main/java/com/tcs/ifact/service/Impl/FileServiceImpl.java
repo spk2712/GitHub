@@ -31,9 +31,10 @@ FileHandler fileHandler;
 				if(null != res && null != res.getResponseObject() && res.getResponseObject() instanceof DBFile) {
 					DBFile dbfile = (DBFile) res.getResponseObject(); 
 					if(null != dbfile & null != dbfile.getData()) {
-						String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+						/*String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 								.path("/ifact/file/downloadFile?user="+dbfile.getUser())
-								.toUriString();
+								.toUriString();*/
+						String fileDownloadUri = null;
 						UploadFileBObj payload = new UploadFileBObj(dbfile.getFilename(), fileDownloadUri,
 								file.getContentType(), file.getSize());
 						return new ResponseEntity<Object>(payload,HttpStatus.EXPECTATION_FAILED);

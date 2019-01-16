@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.UserRegistrationBObj;
@@ -19,7 +19,7 @@ public interface IIFactService {
 
 	ResponseEntity<Object> restPasswordPR(PasswordResetBObj prObj);
 
-	ResponseEntity<Object> login(LoginBObj login);
+	ResponseEntity<Object> login(UserloginBObj login);
 
 	
 }

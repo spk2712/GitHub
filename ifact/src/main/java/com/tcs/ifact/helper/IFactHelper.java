@@ -12,9 +12,14 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.tcs.ifact.dao.IUtilDao;
 import com.tcs.ifact.dao.Impl.UtilDaoImpl;
@@ -35,22 +40,7 @@ public class IFactHelper {
 		return result;
 	}
 
-	public static String constructMonthMax(String workLocation, String year, String month) {
-		int yearNum = Integer.parseInt(year);
-		int mothNum = Integer.parseInt(month);
-		YearMonth ymObj= YearMonth.of(yearNum, mothNum);
-		int daysInMonth = ymObj.lengthOfMonth();
-		int weekends = 0;
-		for(int day=1;day<=daysInMonth;day++) {
-			if(ymObj.atDay(day).getDayOfWeek().equals(DayOfWeek.SATURDAY)||
-					ymObj.atDay(day).getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-				weekends++;
-			}
-		}
-		int maxDays = (daysInMonth - weekends)*8;
-		return Integer.toString(maxDays);
-	}
-	
+
 	public static String deriveMonthDiff(String monthMax, String monthAct) {
 		String diff = null;
 		if(null != monthMax && null != monthAct) {
@@ -428,6 +418,27 @@ public class IFactHelper {
 		}
 
 		return monthRev;
+	}
+
+	public static String genBase64Auth(String user, String password) {
+		String auth = null;
+		if(null!=user && !user.isEmpty() && null != password && !password.isEmpty()) {
+			String authString = user + ":" + password;
+			byte[] authEncBytes = Base64.encodeBase64(authString.getBytes());
+			String authStringEnc = new String(authEncBytes);
+			auth = "Basic " + authStringEnc;
+		}
+		return auth;
+	}
+
+
+	public static ArrayList stringToArray(String data) {
+		List<String> dataList = new ArrayList();
+		if(null != data && !data.isEmpty()) {
+			String[] dataArry = data.split(";");
+			dataList = Arrays.asList(dataArry);
+		}
+		return (ArrayList) dataList;
 	}
 	
 

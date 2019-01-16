@@ -1,39 +1,27 @@
 package com.tcs.ifact.handler;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.sql.Blob;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.tcs.ifact.bobj.ETSSBObj;
 import com.tcs.ifact.bobj.FGBObj;
@@ -66,14 +54,24 @@ public class IFactExcelHandler {
 			String cuMonth2 = iFactDBHandler.getUtilValueByKey(IFactConstant.Month2);
 			String cuMonth3 = iFactDBHandler.getUtilValueByKey(IFactConstant.Month3);
 			String cuYear = iFactDBHandler.getUtilValueByKey(IFactConstant.YEAR);
+			String gift = iFactDBHandler.getUtilValueByKey(IFactConstant.GIFT);
+			String i2i = iFactDBHandler.getUtilValueByKey(IFactConstant.I2I);
+			String clp = iFactDBHandler.getUtilValueByKey(IFactConstant.CLP);
+			String msp= iFactDBHandler.getUtilValueByKey(IFactConstant.MSP);
 			
+			ArrayList giftList = IFactHelper.stringToArray(gift);
+			ArrayList i2iList = IFactHelper.stringToArray(i2i);
+			ArrayList clpList = IFactHelper.stringToArray(clp);
+			ArrayList mspList = IFactHelper.stringToArray(msp);
+			
+					
 			if(null != user) {
 				respObj = iFactDBHandler.getDBFileByUser(user);
 				if(null != respObj && null != respObj.getResponseObject() && respObj.getResponseObject() instanceof DBFile) {
 					DBFile dbfile = (DBFile) respObj.getResponseObject(); 
 					if(null != dbfile & null != dbfile.getData()) {
 						byte[] bdata=dbfile.getData();
-						File excelFile = new File("iFactRawData.xlsx");
+						File excelFile = new File(user+"iFactRawData.xlsx");
 						FileOutputStream fos = new FileOutputStream(excelFile);
 						fos.write(bdata);
 						fos.flush();
@@ -100,7 +98,7 @@ public class IFactExcelHandler {
 							DataFormatter dataFormatter = new DataFormatter();
 							//FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 
-
+							
 
 							Iterator<Sheet> sheetIterator = workbook.sheetIterator();
 							while(sheetIterator.hasNext()) {
@@ -307,9 +305,9 @@ public class IFactExcelHandler {
 
 									}
 
-									pwb.setMonth1Max(IFactHelper.constructMonthMax(pwb.getWorkLocation(),cuYear,cuMonth1));
-									pwb.setMonth2Max(IFactHelper.constructMonthMax(pwb.getWorkLocation(),cuYear,cuMonth2));
-									pwb.setMonth3Max(IFactHelper.constructMonthMax(pwb.getWorkLocation(),cuYear,cuMonth3));
+									pwb.setMonth1Max(constructMonthMax(pwb.getWorkCountry(),pwb.getWorkLocation(),cuYear,cuMonth1));
+									pwb.setMonth2Max(constructMonthMax(pwb.getWorkCountry(),pwb.getWorkLocation(),cuYear,cuMonth2));
+									pwb.setMonth3Max(constructMonthMax(pwb.getWorkCountry(),pwb.getWorkLocation(),cuYear,cuMonth3));
 
 									Date now = new Date();
 									pwb.setLastUpdatedDate(now);
@@ -321,8 +319,8 @@ public class IFactExcelHandler {
 								}
 							}
 
-							ifactMap.put("PWBLIST", pwbList);
-							ifactMap.put("PWBMAP", pwbMap);
+							ifactMap.put(IFactConstant.PWBLIST, pwbList);
+							ifactMap.put(IFactConstant.PWBMAP, pwbMap);
 							logger.debug("pwb Object created"+pwbList.size()+pwbMap.size());
 							respObj.setResponseObject(ifactMap);
 							respObj.setError(false);
@@ -343,6 +341,37 @@ public class IFactExcelHandler {
 
 		return respObj;		
 	}
+	
+	
+	public  String constructMonthMax(String workCountry,String workLocation, String year, String month) {
+		int yearNum = Integer.parseInt(year);
+		int mothNum = Integer.parseInt(month);
+		YearMonth ymObj= YearMonth.of(yearNum, mothNum);
+		int daysInMonth = ymObj.lengthOfMonth();
+		int weekends = 0;
+		for(int day=1;day<=daysInMonth;day++) {
+			if(ymObj.atDay(day).getDayOfWeek().equals(DayOfWeek.SATURDAY)||
+					ymObj.atDay(day).getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+				weekends++;
+			}
+		}
+		
+		
+		if(null != workCountry && !workCountry.isEmpty()) {
+			if(workCountry.equalsIgnoreCase(IFactConstant.UnitedStates)) {
+				workLocation = IFactConstant.USA;
+			}else if(workCountry.equalsIgnoreCase(IFactConstant.UnitedKingdom)) {
+				workLocation = IFactConstant.UK;
+			}else if(workCountry.equalsIgnoreCase(IFactConstant.Singapore)) {
+				workLocation = IFactConstant.Singapore;
+			}
+		}
+		int leave = iFactDBHandler.getLeaveDays(workLocation,year,month);
+		
+		int maxHrs = (daysInMonth-weekends-leave)*8;
+		return Integer.toString(maxHrs);
+	}
+	
 
 /*	public ResponseBObj uploadExcel(MultipartFile file, String fileName) {
 		ResponseBObj respObj = new ResponseBObj(); 
@@ -381,7 +410,7 @@ public class IFactExcelHandler {
 					DBFile dbfile = (DBFile) respObj.getResponseObject(); 
 					if(null != dbfile & null != dbfile.getData()) {
 						byte[] bdata=dbfile.getData();
-						File excelFile = new File("PWB.xlsx");
+						File excelFile = new File(user+"PWB.xlsx");
 						FileOutputStream fos = new FileOutputStream(excelFile);
 						fos.write(bdata);
 						fos.flush();
@@ -403,12 +432,12 @@ public class IFactExcelHandler {
 							HashMap<String,PWBBObj> pWBBObjMap = new HashMap<String,PWBBObj>();
 							HashMap  ifactMap = new HashMap();
 
-							System.out.println("Number of Sheets:"+workbook.getNumberOfSheets());
+							logger.info("Number of Sheets:"+workbook.getNumberOfSheets()+user);
 							Iterator<Sheet> sheetIterator = workbook.sheetIterator();
 							while (sheetIterator.hasNext()) {
 								Sheet sheet = sheetIterator.next();
-								System.out.println("Sheet Name:" + sheet.getSheetName());
-								if("PWB".equalsIgnoreCase(sheet.getSheetName())) {
+								logger.info("Sheet Name:" + sheet.getSheetName()+user);
+								if(IFactConstant.PWBSHEET.equalsIgnoreCase(sheet.getSheetName())) {
 									Iterator<Row> rowIterator = sheet.rowIterator();
 									while (rowIterator.hasNext()) {
 										Row row = rowIterator.next();

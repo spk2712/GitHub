@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import com.tcs.ifact.model.Util;
 
-@CacheConfig(cacheNames = "util")
+@CacheConfig(cacheNames = "ifactCache")
 public interface IUtilDao {
 
 	@Cacheable

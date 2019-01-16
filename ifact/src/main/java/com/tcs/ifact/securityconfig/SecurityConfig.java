@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		  	.antMatchers("/ifact/user**").hasAnyRole("ADMIN")
 		  	.antMatchers("/ifact/pwb**").hasAnyRole("ADMIN","USER","DP","DM","PMO")
 		  	.antMatchers("/ifact/file**").hasAnyRole("ADMIN","USER","DP","DM","PMO")
+		  	.antMatchers("/ifact/util**").hasAnyRole("ADMIN")
 			.and().httpBasic().realmName("ifact")
 			.authenticationEntryPoint(appAuthenticationEntryPoint);
 	} 

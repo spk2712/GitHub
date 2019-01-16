@@ -1,0 +1,74 @@
+
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('0', 'India', 'Chennai', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('1', 'India', 'Chennai', '2019', '4', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('2', 'India', 'Chennai', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('3', 'India', 'Chennai', '2019', '8', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('4', 'India', 'Chennai', '2019', '9', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('5', 'India', 'Chennai', '2019', '10', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('6', 'India', 'Chennai', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('7', 'India', 'Mumbai', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('8', 'India', 'Mumbai', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('9', 'India', 'Mumbai', '2019', '8', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('10', 'India', 'Mumbai', '2019', '9', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('11', 'India', 'Mumbai', '2019', '10', '3');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('12', 'India', 'Mumbai', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('13', 'India', 'Bangalore', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('14', 'India', 'Bangalore', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('15', 'India', 'Bangalore', '2019', '8', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('16', 'India', 'Bangalore', '2019', '9', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('17', 'India', 'Bangalore', '2019', '10', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('18', 'India', 'Bangalore', '2019', '11', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('19', 'India', 'Bangalore', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('20', 'India', 'Hyderabad', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('21', 'India', 'Hyderabad', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('22', 'India', 'Hyderabad', '2019', '6', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('23', 'India', 'Hyderabad', '2019', '8', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('24', 'India', 'Hyderabad', '2019', '9', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('25', 'India', 'Hyderabad', '2019', '10', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('26', 'India', 'Hyderabad', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('27', 'USA', 'USA', '2019', '1', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('28', 'USA', 'USA', '2019', '2', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('29', 'USA', 'USA', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('30', 'USA', 'USA', '2019', '7', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('31', 'USA', 'USA', '2019', '9', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('32', 'USA', 'USA', '2019', '10', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('33', 'USA', 'USA', '2019', '11', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('34', 'USA', 'USA', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('35', 'Singapore', 'Singapore', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('36', 'Singapore', 'Singapore', '2019', '2', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('37', 'Singapore', 'Singapore', '2019', '4', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('38', 'Singapore', 'Singapore', '2019', '5', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('39', 'Singapore', 'Singapore', '2019', '6', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('40', 'Singapore', 'Singapore', '2019', '8', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('41', 'Singapore', 'Singapore', '2019', '10', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('42', 'Singapore', 'Singapore', '2019', '12', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('43', 'UK', 'UK', '2019', '1', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('44', 'UK', 'UK', '2019', '4', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('45', 'UK', 'UK', '2019', '5', '2');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('46', 'UK', 'UK', '2019', '8', '1');
+INSERT INTO `ifact`.`leaveday` (`leavedayID`, `leavecountry`, `leavecity`, `leaveyear`, `leavemonth`, `numberofleavedays`) VALUES ('47', 'UK', 'UK', '2019', '12', '2');
+
+
+
+
+
+
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('2', 'CurrentMonth', 'Month2', '2');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('3', 'CurrentMonth', 'Month3', '3');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('4', 'CurrentYear', 'YEAR', '2019');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('5', 'CurrencyRate', 'DollorRate', '45');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('6', 'MonthFlag', 'All3Months', 'Y');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('7', 'MonthFlag', 'Last2Months', 'N');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('8', 'MonthFlag', 'Last1Month', 'N');
+
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('4', 'ProjectType', 'GIFT', 'GIFT');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('5', 'ProjectType', 'I2I', 'I2I');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('6', 'ProjectType', 'MSP', 'MSP');
+INSERT INTO `ifact`.`util` (`utilId`, `utilgroup`, `utilname`, `utilvalue`) VALUES ('7', 'ProjectType', 'CLP', 'CLP');
+
+
+
+
+
+
+

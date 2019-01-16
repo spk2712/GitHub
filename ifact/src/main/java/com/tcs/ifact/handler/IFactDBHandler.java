@@ -15,11 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
 import com.tcs.ifact.dao.IDBFileDao;
+import com.tcs.ifact.dao.ILeaveDao;
 import com.tcs.ifact.dao.IPivotDao;
 import com.tcs.ifact.dao.IPwbDao;
 import com.tcs.ifact.dao.IUserDao;
@@ -27,6 +28,7 @@ import com.tcs.ifact.dao.IUtilDao;
 import com.tcs.ifact.helper.IFactConstant;
 import com.tcs.ifact.helper.IFactHelper;
 import com.tcs.ifact.model.DBFile;
+import com.tcs.ifact.model.Leaveday;
 import com.tcs.ifact.model.Pivot;
 import com.tcs.ifact.model.Pwb;
 import com.tcs.ifact.model.UserInfo;
@@ -53,6 +55,9 @@ public class IFactDBHandler {
 	IPivotDao pivotDao;
 	
 	@Autowired
+	ILeaveDao leaveDao;
+	
+	@Autowired
 	IFactObjectHandler objectHandler;
 	
 	
@@ -62,8 +67,8 @@ public class IFactDBHandler {
 		try {
 			if(null != res && !res.isError() && null != res.getResponseObject() && res.getResponseObject() instanceof HashMap) {
 				HashMap map = (HashMap) res.getResponseObject();
-				if(null != map && map.containsKey("PWBLIST") && null != map.get("PWBLIST") && map.get("PWBLIST") instanceof ArrayList) {
-					ArrayList<Pwb> pwbList =  (ArrayList<Pwb>) map.get("PWBLIST");
+				if(null != map && map.containsKey(IFactConstant.PWBLIST) && null != map.get(IFactConstant.PWBLIST) && map.get(IFactConstant.PWBLIST) instanceof ArrayList) {
+					ArrayList<Pwb> pwbList =  (ArrayList<Pwb>) map.get(IFactConstant.PWBLIST);
 					if(null != pwbList && pwbList.size()>0) {
 						Iterator<Pwb> itr =  pwbList.iterator();
 						while(itr.hasNext()) {
@@ -73,10 +78,18 @@ public class IFactDBHandler {
 									List<Pwb> pwbDB = pwbDao.findByEmpIDAndWorkerID(pwb.getEmpID(), pwb.getWorkerID());
 									if(null != pwbDB && pwbDB.size()>0) {
 										if(null != pwbDB.get(0)) {
-											pwbDao.update(pwb);
+											try {
+												pwbDao.update(pwb);
+											}catch(Exception ex) {
+												logger.error("PWB Update:" + pwb.getEmpID()+"_"+pwb.getWorkerID()  +":"+ ex);
+											}
 										}
 									}else {
-										pwbDao.create(pwb);
+										try {
+											pwbDao.create(pwb);
+										}catch(Exception ex) {
+											logger.error("PWB Create:" + pwb.getEmpID()+"_"+pwb.getWorkerID()  +":"+ ex);
+										}
 									}
 								}
 							}
@@ -649,7 +662,7 @@ public class IFactDBHandler {
 		return bObj;
 	}
 
-	public ResponseBObj validateLogin(LoginBObj login) {
+	public ResponseBObj validateLogin(UserloginBObj login) {
 		ResponseBObj bObj = new ResponseBObj();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		try {
@@ -722,6 +735,17 @@ public class IFactDBHandler {
 		}
 	
 		return bObj;
+	}
+
+	public int getLeaveDays(String city, String year, String month) {	
+		int leave = 0;	
+		if(null != city && !city.isEmpty() && null != year && !year.isEmpty() && null != month && !month.isEmpty()) {
+			List<String>  levlist =  leaveDao.getLeaveDays(city, year, month);
+			if(null != levlist && levlist.size()>0 && null != levlist.get(0) && !levlist.get(0).isEmpty()&& IFactHelper.isNumeric(levlist.get(0))) {
+				leave = Integer.parseInt(levlist.get(0));
+			}
+		}	
+		return leave;
 	}
 
 	

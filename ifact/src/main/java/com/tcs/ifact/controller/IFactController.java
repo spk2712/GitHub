@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.UserBObj;
@@ -37,7 +37,7 @@ public class IFactController {
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ResponseEntity<Object> ifactlogin(@RequestBody LoginBObj pfObj) {
+	public ResponseEntity<Object> ifactlogin(@RequestBody UserloginBObj pfObj) {
 		logger.debug("Welcome to iFact login");	
 		ResponseEntity<Object> resp = iFactService.login(pfObj);
 		return new ResponseEntity<Object>(resp, HttpStatus.OK);

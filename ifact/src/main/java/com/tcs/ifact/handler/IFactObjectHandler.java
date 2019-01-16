@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 import com.tcs.ifact.bobj.CPRevBObj;
 import com.tcs.ifact.bobj.DMRevBObj;
 import com.tcs.ifact.bobj.DPRevBObj;
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PWBBObj;
 import com.tcs.ifact.bobj.PWBRevBObj;
 import com.tcs.ifact.bobj.PWBUpdateBObj;
@@ -110,6 +110,7 @@ public class IFactObjectHandler {
 					user.setEmail(regBObj.getEmail());
 					Date date =new SimpleDateFormat("dd/MMM/yyyy").parse(regBObj.getDateOfJoining()); 
 					user.setDateofjoining(date);
+					user.setAuthstring(IFactHelper.genBase64Auth(regBObj.getUser(), regBObj.getPassword()));
 				}else {
 					responseBObj.setError(true);
 					responseBObj.setMessage("Please Enter Valid role");
@@ -1656,20 +1657,21 @@ public class IFactObjectHandler {
 		return response;
 	}
 
-	public LoginBObj mapLoginObj(LoginBObj login, UserInfo userInfo) {
-		
+	public UserBObj mapLoginObj(UserloginBObj login, UserInfo userInfo) {
+		UserBObj user = new UserBObj();
 		if(null != userInfo) {
-			login.setDateofjoining(userInfo.getDateofjoining());
-			login.setEmail(userInfo.getEmail());
-			login.setEnabled(userInfo.getEnabled());
-			login.setFullName(userInfo.getFullName());
-			login.setNickname(userInfo.getNickname());
-			login.setProjectrole(userInfo.getProjectrole());
-			login.setReportto(userInfo.getReportto());
-			login.setRole(userInfo.getRole());
+			user.setUser(userInfo.getUser());
+			user.setDateofjoining(userInfo.getDateofjoining().toString());
+			user.setEmail(userInfo.getEmail());
+			user.setEnabled(userInfo.getEnabled());
+			user.setFullName(userInfo.getFullName());
+			user.setProjectrole(userInfo.getProjectrole());
+			user.setReportto(userInfo.getReportto());
+			user.setRole(userInfo.getRole());
+			//user.setAuthstring(userInfo.getAuthstring());;
 		}
 		
-		return login;	
+		return user;	
 		
 	}
 

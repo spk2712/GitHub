@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
@@ -79,7 +79,7 @@ public class IFactServiceImpl implements IIFactService {
 	}
 
 	@Override
-	public ResponseEntity<Object> login(LoginBObj login) {
+	public ResponseEntity<Object> login(UserloginBObj login) {
 		ResponseBObj res = new ResponseBObj();
 		res = ifactHandler.login(login);
 		if(null != res) {

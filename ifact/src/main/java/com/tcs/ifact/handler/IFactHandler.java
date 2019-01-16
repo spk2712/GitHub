@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tcs.ifact.bobj.LoginBObj;
+import com.tcs.ifact.bobj.UserloginBObj;
 import com.tcs.ifact.bobj.PasswordForgotBObj;
 import com.tcs.ifact.bobj.PasswordResetBObj;
 import com.tcs.ifact.bobj.ResponseBObj;
@@ -62,7 +62,7 @@ public class IFactHandler {
 		return responseBObj;
 	}
 
-	public ResponseBObj login(LoginBObj login) {
+	public ResponseBObj login(UserloginBObj login) {
 		ResponseBObj responseBObj = new ResponseBObj();
 		if(null != login) {
 			if(null != login.getUser() && !login.getUser().isEmpty()) {

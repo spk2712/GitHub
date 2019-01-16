@@ -10,7 +10,7 @@
 			enable-statistics="true" />
 	</service>
 
-	<cache alias="util">
+	<cache alias="ifactCache">
 		<expiry>
 			<ttl unit="seconds">3600</ttl>
 		</expiry>
